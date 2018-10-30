@@ -1,0 +1,49 @@
+<h1>Voici le formulaire :</h1>
+<form action="/users" method="POST">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<p>Nom :</p>
+	<input type="text" name="username">
+	<p>Email :</p>
+	<input type="text" name="email">
+	<p>Bio :</p>
+	<input type="text" name="bio">
+	<br/>
+	<input type="submit" value="Envoyer">
+</form>
+</br></br>
+<h2>Le deuxieme :</h2>
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+  <%= label_tag 'Nom :' %>
+  <br /> <br />
+  <%= text_field_tag 'username' %>
+  <br /> <br />
+
+  <%= label_tag 'Email :' %>
+  <br /> <br />
+  <%= text_field_tag 'email' %>
+  <br /> <br />
+
+  <%= label_tag 'Bio :' %>
+  <br /> <br />
+  <%= text_area_tag 'bio' %>
+  <br /> <br />
+
+  <%= submit_tag "Envoyer" %>
+
+<% end %>
+<br /> <br />
+
+<h2>Le troisieme :</h2>
+	
+<%= form_for @user_for, url: {action: "create"}, :method => :POST do |f| %>
+ <%= label_tag 'Nom :' %>
+ <%= f.text_field :username %>
+ <br><br>
+ <%= label_tag 'Email :' %>
+ <%= f.text_field :email %>
+ <br><br>
+ <%= label_tag 'Bio:' %>
+ <%= f.text_field :bio %>
+ <br><br>
+ <%= f.submit "Envoyer" %>
+<% end %>
